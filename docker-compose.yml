@@ -27,6 +27,12 @@ services:
     env_file:
       - .env
 
+    command: gunicorn app.main:"create_flask_app()" -b 0.0.0.0:8000 --reload
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
   postgres:
     restart: always
     container_name: cybellum-postgres
@@ -37,10 +43,10 @@ services:
       - pg-data:/var/lib/postgresql/data
 
     ports:
-      - "5432:5432"
+      - "5433:5432"
 
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U pg_user -d cybellum" ]
+      test: [ "CMD-SHELL", "pg_isready -U test_user -d cybellum" ]
       interval: 1s
       timeout: 3s
       retries: 10

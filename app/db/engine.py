@@ -10,9 +10,9 @@ def generate_postgres_url(
 
 
 SQLALCHEMY_DATABASE_URL = generate_postgres_url(
-    settings.POSTGRES_USERNAME,
+    settings.POSTGRES_USER,
     settings.POSTGRES_PASSWORD,
     settings.POSTGRES_HOST,
     settings.POSTGRES_PORT,
-    settings.POSTGRES_DB_NAME,
+    settings.POSTGRES_DB,
 )

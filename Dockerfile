@@ -28,8 +28,4 @@ RUN poetry config virtualenvs.create false
 # install requirements
 RUN poetry install
 
-# migrate migrations
-CMD alembic upgrade head
-
-# run uvicorn
-CMD gunicorn app.main:"create_flask_app()" -b 0.0.0.0:8000 --reload
+ENTRYPOINT ["bash", "entrypoint.sh"]
