@@ -1,3 +1,5 @@
+import datetime
+
 from pydantic import BaseModel
 
 
@@ -16,6 +18,7 @@ class PostSchema(BaseModel):
     content: str
     title: str
     user_id: int
+    crated_at: datetime.datetime
 
 
 class CommentPostSchema(BaseModel):
@@ -23,3 +26,4 @@ class CommentPostSchema(BaseModel):
     content: str
     post_id: int
     user_id: int
+    crated_at: datetime.datetime
